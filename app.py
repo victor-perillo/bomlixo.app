@@ -54,17 +54,14 @@ df_notas_f = df_notas[(df_notas['dt-emis-nota'].dt.date >= d_inicio) & (df_notas
 st.title("📊 Relatório de Performance Operacional")
 
 # Cálculos para os Cards
-total_faturamento = df_notas_f['vl-total'].sum()
 total_vendas_qtd = df_mov_f['qtd-faturada'].sum()
 total_producao_qtd = df_mov_f['qtd-produzida'].sum()
 
 # Layout dos Cards
-col_m1, col_m2, col_m3 = st.columns(3)
+col_m1, col_m2 = st.columns(2)
 with col_m1:
-    st.metric("Faturamento Total", f"R$ {total_faturamento:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
-with col_m2:
     st.metric("Vendas (Qtd Total)", f"{total_vendas_qtd:,.0f}".replace(',', '.'))
-with col_m3:
+with col_m2:
     st.metric("Produção (Qtd Total)", f"{total_producao_qtd:,.0f}".replace(',', '.'))
 
 st.divider()
